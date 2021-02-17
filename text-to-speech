@@ -1,0 +1,47 @@
+#!/bin/sh
+# Example: ./pdf-to-speech EN in.pdf
+# EN: voice Alex
+# EN: voice Samantha
+# DE: voice Anna
+lang="$1"
+filename="$2"
+basename="${filename%.*}"
+extension="${filename##*.}"
+
+# doulbe check lang
+case $lang in
+  DE)
+    lang="DE"
+    sayVoice="Anna"
+    ;;
+  *)  # default: EN
+    lang="EN"
+    sayVoice="Samantha"
+    ;;
+esac
+
+echo "\033[01;37m==> \033[01;31m($lang) $filename\033[00;00m"
+# 01: PDF to text (if necessary)
+case $extension in
+  pdf)
+    caffeinate -i pdftotext -enc UTF-8 -nopgbrk "$filename" "$basename.txt"
+    # caffeinate -i ebook-convert "$filename" "$basename.txt"
+    ;;
+esac
+
+# 02: text to voice
+caffeinate -i say -v $sayVoice -o "$basename.aiff" -f "$basename.txt"
+
+# 03: voice to audio file
+# caffeinate -i ffmpeg -i "$basename.aiff" -f mp3 -acodec libmp3lame -ab 192000 -ar 44100 "$basename.mp3"
+# caffeinate -i ffmpeg -i "$basename.aiff" -f mp3 -acodec libmp3lame -ac 2 -ab 192k "$basename.mp3"
+caffeinate -i ffmpeg -i "$basename.aiff" -c:a aac -vn "$basename.m4a"
+
+# 04: cleaning
+echo "Cleaning..."
+case $extension in
+  pdf)
+    rm "$basename.txt"
+    ;;
+esac
+rm "$basename.aiff"
