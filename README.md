@@ -1,5 +1,5 @@
 # text-to-speech
-A small text-to-speech (PDF or TXT) shell script utalizing pdftotext, say, and ffmpeg
+A small text-to-speech (PDF or TXT) shell script utilizing `pdftotext`, `say`, and `ffmpeg`.
 
 # Dependencies
 * `pdftotext` (in case you have a PDF as input file): https://formulae.brew.sh/cask/pdftotext
