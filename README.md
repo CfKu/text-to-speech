@@ -2,9 +2,9 @@
 A small text-to-speech (PDF or TXT) shell script utalizing pdftotext, say, and ffmpeg
 
 # Dependencies
-* pdftotext (in case you have a PDF as input file): https://formulae.brew.sh/cask/pdftotext
-* say (is part of MacOS)
-* ffmpeg (to convert voice to audio, i.e. aiff > m4a): https://formulae.brew.sh/formula/ffmpeg
+* `pdftotext` (in case you have a PDF as input file): https://formulae.brew.sh/cask/pdftotext
+* `say` (is part of MacOS)
+* `ffmpeg` (to convert voice to audio, i.e. aiff > m4a): https://formulae.brew.sh/formula/ffmpeg
 
 # Supported languages
 * DE
