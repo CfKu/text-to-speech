@@ -13,7 +13,7 @@ A small text-to-speech (PDF or TXT) shell script utilizing `pdftotext`, `say`, a
 
 # How to use it?
 ```shell
-./pdf-to-speech EN in.pdf
-./pdf-to-speech DE in.pdf
-./pdf-to-speech EN in.txt
+./text-to-speech EN in.pdf
+./text-to-speech DE in.pdf
+./text-to-speech EN in.txt
 ```
